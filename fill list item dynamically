@@ -1,0 +1,16 @@
+function populateQuestions() {
+  var form = FormApp.getActiveForm();
+  var googleSheetsQuestions = getQuestionValues(); // array of list items choices
+  var itemsArray = form.getItems();
+  itemsArray.forEach(function(item){
+    
+      if(item.getTitle() == 	'Which Property Are You Inspecting?'){  //check if the wanted list
+            var choiceArray = [];
+              for(j = 1; j < googleSheetsQuestions.length; j++)
+                    {
+                     choiceArray.push(googleSheetsQuestions[j])
+                    }
+              item.asListItem().setChoiceValues(choiceArray);
+      }
+    })
+  }
